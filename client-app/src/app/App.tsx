@@ -5,10 +5,6 @@ import axios from "axios";
 import { List } from "semantic-ui-react";
 import { IValue } from "../models/Value";
 
-interface IState {
-  values: IValue[];
-}
-
 const App: React.FC = () => {
   const [values, setValues] = useState<IValue[]>([]);
 
@@ -22,10 +18,6 @@ const App: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>Hello World!</p>
         <p><a
           className="App-link"
           href="https://github.com/dapowers87/AspReactApp"
