@@ -1,48 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import logo from "../logo.svg";
 import "./App.css";
-import axios from "axios";
-import { List } from "semantic-ui-react";
-import { IValue } from "../models/Value";
+import NavBar from "../features/nav/NavBar";
+import { Route } from "react-router";
+import ValuesLister from "../features/values/ValuesLister";
 
 const App: React.FC = () => {
-  const [values, setValues] = useState<IValue[]>([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:5050/api/values").then(response => {
-      setValues(response.data);
-    });
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p><a
-          className="App-link"
-          href="https://github.com/dapowers87/AspReactApp"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub repos for this project
-        </a></p>
-        <p>
-          <a
-            className="App-link"
-            href="./david_powers_resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            My Resume
-          </a>
-        </p>
-      </header>
-      <List>
-        {values.map(value => (
-          <List.Item key={value.id}>{value.value}</List.Item>
-        ))}
-      </List>
-    </div>
+    <Fragment>
+      <NavBar />
+      <Route exact path={"/"}
+        render={() => (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            <a
+              className="App-link"
+              href="https://github.com/dapowers87/AspReactApp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub repos for this project
+            </a>
+          </p>
+          <p>
+            <a
+              className="App-link"
+              href="./david_powers_resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              My Resume
+            </a>
+          </p>
+        </header>
+      </div>)} />
+      <Route path="/ValuesLister" component={ValuesLister}/>
+    </Fragment>
   );
 };
 
