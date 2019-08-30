@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Domain;
+using MediatR;
+using Application.Values;
 
 namespace API.Controllers
 {
@@ -11,29 +13,18 @@ namespace API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public ValuesController(IMediator mediator)
+        {
+            this._mediator = mediator;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Value>> Get()
+        public async Task<ActionResult<List<Value>>> Get()
         {
-            var list = new List<Value>(){
-                new Value
-                {
-                    id = 1,
-                    value = "value1"
-                },
-                new Value
-                {
-                    id = 2,
-                    value = "value2"
-                },
-                new Value
-                {
-                    id = 3,
-                    value = "value3"
-                }
-            };
-
-            return list;
+            return await _mediator.Send(new List.Query());
         }
 
         // GET api/values/5

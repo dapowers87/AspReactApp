@@ -4,39 +4,51 @@ import "./App.css";
 import NavBar from "../features/nav/NavBar";
 import { Route } from "react-router";
 import ValuesLister from "../features/values/ValuesLister";
+import { Container } from "semantic-ui-react";
 
 const App: React.FC = () => {
   return (
     <Fragment>
       <NavBar />
-      <Route exact path={"/"}
+      <Route
+        exact
+        path={"/"}
         render={() => (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            <a
-              className="App-link"
-              href="https://github.com/dapowers87/AspReactApp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub repos for this project
-            </a>
-          </p>
-          <p>
-            <a
-              className="App-link"
-              href="./david_powers_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              My Resume
-            </a>
-          </p>
-        </header>
-      </div>)} />
-      <Route path="/ValuesLister" component={ValuesLister}/>
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                <a
+                  className="App-link"
+                  href="https://github.com/dapowers87/AspReactApp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub repos for this project
+                </a>
+              </p>
+              <p>
+                <a
+                  className="App-link"
+                  href="./david_powers_resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  My Resume
+                </a>
+              </p>
+            </header>
+          </div>
+        )}
+      />
+      <Route
+        path="/ValuesLister"
+        render={() => (
+          <Container style={{ marginTop: "7em"  }}>
+            <ValuesLister />
+          </Container>
+        )}
+      />
     </Fragment>
   );
 };
