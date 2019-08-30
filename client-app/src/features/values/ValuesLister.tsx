@@ -8,7 +8,8 @@ const ValuesLister = () => {
   const [values, setValues] = useState<IValue[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5050/api/values").then(response => {
+    console.log('backendurl= ' + process.env.REACT_APP_BACKEND_URL)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/values`).then(response => {
       setValues(response.data);
     });
   }, []);
