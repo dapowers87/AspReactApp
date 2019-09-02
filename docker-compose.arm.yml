@@ -2,17 +2,29 @@ version: "3.4"
 
 services:
   mongodb:
+    container_name: mongodb
     image: 'webhippie/mongodb:latest'
     volumes:
       - /data/db:/data/db
       - /data/configdb:/data/configdb
+    ports:
+      - '27017:27017'
+      - '28017:28017'
+    command: mongod --journal
   client:
-    build:
-      context: ./client-app
+    container_name: client
+    image: 'dpowersnewg/aspreactapp.client-app'
     ports:
       - '5001:80'
   backend:
-    build:
-      context: .
+    container_name: backend
+    image: 'dpowersnewg/aspreactapp.api'
     ports:
       - '5050:5050'
+  watchtower:
+    restart: always
+    image: 'containrrr/watchtower'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --debug true --cleanup true client backend  
+
