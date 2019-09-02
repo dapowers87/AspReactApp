@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="App">
       <header style={{marginTop:'40px'}} className="App-header">
-        <Image style={{marginLeft:'2em', resizeMode:'contain'}} src={logo} alt="logo" />
+        <Image style={{resizeMode:'contain'}} src={logo} alt="logo" />
         <br/>
         <p>
           <a
