@@ -14,4 +14,4 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    repo: dpowersnews/aspreactapp.api
+    repo: dpowersnewg/aspreactapp.api
