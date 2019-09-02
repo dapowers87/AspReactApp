@@ -6,6 +6,10 @@ platform:
   os: linux
   arch: arm
 
+trigger:
+  branch:
+  - master
+
 steps:
   - name: backend-docker
     image: plugins/docker
@@ -26,6 +30,4 @@ steps:
       dockerfile: ./client-app/Dockerfile
       context: ./client-app
 
-trigger:
-  branch:
-  - master
+
