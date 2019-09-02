@@ -11,3 +11,5 @@ services:
   backend:
     build:
       context: .
+    ports:
+      - '5050:5050'
