@@ -1,13 +1,11 @@
 import React from "react";
-import logo from "../../assets/logo.svg";
-import diagram from "../../assets/aspreactapp_diagram.jpg";
-import { Label } from "semantic-ui-react";
+import logo from "../../assets/logo512.png";
 
 const HomePage = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header style={{marginTop:'40px'}} className="App-header">
+        <img src={logo} alt="logo" />
         <p>
           <a
             className="App-link"
@@ -27,12 +25,6 @@ const HomePage = () => {
           >
             My Resume
           </a>
-          <br />
-
-          <div style={{ marginTop: "2em" }} />
-          <Label>Diagram of the AspReactApp Project</Label>
-          <br />
-          <img src={diagram} alt="diagram" />
         </p>
       </header>
     </div>

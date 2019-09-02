@@ -8,6 +8,7 @@ import PersonDashboard from "../features/Persons/dashboard/PersonDashboard";
 import HomePage from "../features/home/HomePage";
 import PersonForm from "../features/Persons/form/PersonForm";
 import { ToastContainer } from "react-toastify";
+import Diagram from "../features/diagram/Diagram";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <Container style={{ marginTop: "7em" }}>
         <Route path="/ValuesLister" component={ValuesLister} />
         <Route path="/Persons" component={PersonDashboard} />
+        <Route path="/Diagram" component={Diagram} />
         <Route path="/Person/:id" component={PersonForm} />
         <Route path={["/createPerson", "/manage/:id"]} component={PersonForm} />
       </Container>
