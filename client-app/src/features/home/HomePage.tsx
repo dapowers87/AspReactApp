@@ -1,11 +1,12 @@
 import React from "react";
 import logo from "../../assets/logo.png";
+import {Image} from 'semantic-ui-react'
 
 const HomePage = () => {
   return (
     <div className="App">
       <header style={{marginTop:'40px'}} className="App-header">
-        <img style={{marginLeft:'2em'}} src={logo} alt="logo" />
+        <Image style={{marginLeft:'2em', resizeMode:'contain'}} src={logo} alt="logo" />
         <br/>
         <p>
           <a
