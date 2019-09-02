@@ -19,9 +19,12 @@ namespace API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly ILogger<Startup> _logger;
+
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -46,6 +49,8 @@ namespace API
                 options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
+
+            _logger.LogError(Configuration.GetSection("MongoConnection:ConnectionString").Value);
 
             services.AddScoped<MongoSettings>(s =>
                 s.GetService<IOptions<MongoSettings>>().Value

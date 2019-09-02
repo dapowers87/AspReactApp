@@ -5,10 +5,9 @@ ENV ASPNETCORE_URLS http://*:5050
 EXPOSE 5050
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS builder
-ARG Configuration=Release
 WORKDIR /src
 COPY . .
-RUN dotnet publish -c $Configuration -o /app
+RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
