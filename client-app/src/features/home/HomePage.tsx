@@ -5,7 +5,8 @@ const HomePage = () => {
   return (
     <div className="App">
       <header style={{marginTop:'40px'}} className="App-header">
-        <img src={logo} alt="logo" />
+        <img style={{marginLeft:'2em'}} src={logo} alt="logo" />
+        <br/>
         <p>
           <a
             className="App-link"
