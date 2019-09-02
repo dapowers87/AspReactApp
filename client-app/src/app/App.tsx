@@ -19,8 +19,8 @@ const App: React.FC = () => {
         <Route path="/ValuesLister" component={ValuesLister} />
         <Route path="/Persons" component={PersonDashboard} />
         <Route path="/Person/:id" component={PersonForm} />
+        <Route path={["/createPerson", "/manage/:id"]} component={PersonForm} />
       </Container>
-      />
     </Fragment>
   );
 };

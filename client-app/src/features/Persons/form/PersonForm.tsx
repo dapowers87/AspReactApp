@@ -10,6 +10,7 @@ import PersonStore from "../../../app/stores/personStore";
 import { Grid, Form, Button } from "semantic-ui-react";
 import { IPerson } from "../../../models/Person";
 import { RouteComponentProps } from "react-router";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 interface FormParams {
   id: string;
@@ -25,7 +26,8 @@ const PersonForm: React.FC<RouteComponentProps<FormParams>> = ({
     loadPerson,
     loadedPerson,
     clearLoadedPerson,
-    updatePerson
+    updatePerson,
+    isSubmitting
   } = personStore;
 
   const [person, setPerson] = useState<IPerson>({
@@ -38,29 +40,36 @@ const PersonForm: React.FC<RouteComponentProps<FormParams>> = ({
 
   useEffect(() => {
     if (match.params.id && person.id === "") {
-      console.log("loading Person");
+      console.log('Loading Person');
       loadPerson(match.params.id);
       if (loadedPerson) setPerson(loadedPerson);
     }
+
     return () => {
       clearLoadedPerson();
     };
-  }, [match.params.id, loadPerson, setPerson, loadedPerson, person.id]);
+  }, [
+    match.params.id,
+    loadPerson,
+    setPerson,
+    loadedPerson,
+    person.id,
+    clearLoadedPerson
+  ]);
 
   const handleOnSubmit = () => {
-    if (match.params.id)
-        updatePerson(person)
-    else
-        createPerson(person!);
+    if (match.params.id) updatePerson(person);
+    else createPerson(person!);
     history.push("/Persons");
   };
 
-  const handleInputChange = (
-    event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     setPerson({ ...person, [name]: value });
   };
+
+  if (personStore.isLoading)
+    return <LoadingComponent content="Loading Person..." />;
 
   return (
     <Fragment>
@@ -109,7 +118,7 @@ const PersonForm: React.FC<RouteComponentProps<FormParams>> = ({
               />
             </Form.Field>
             <Button
-              //   loading={submitting}
+              loading={isSubmitting}
               floated="right"
               positive
               type="submit"

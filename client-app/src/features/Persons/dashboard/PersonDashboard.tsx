@@ -4,6 +4,7 @@ import PersonList from "./PersonList";
 import PersonStore from "../../../app/stores/personStore";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 const PersonDashboard: React.FC = () => {
   const personStore = useContext(PersonStore);
@@ -12,10 +13,13 @@ const PersonDashboard: React.FC = () => {
     personStore.loadPersons();
   }, [personStore]);
 
+  if (personStore.isLoading)
+    return <LoadingComponent content="Loading People..." />;
+
   return (
     <Grid>
       <Grid.Column width={5}>
-        <Button as={Link} to="/Person" icon>
+        <Button as={Link} to="/createPerson" icon>
           <Icon name="add user" />
         </Button>
         <PersonList />
