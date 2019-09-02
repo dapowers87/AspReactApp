@@ -9,17 +9,20 @@ axios.interceptors.response.use(undefined, error => {
   if (error.message === "Network Error" && !error.response) {
     toast.error("Network error - make sure API is running!");
   }
-  const { status, data, config } = error.response;
 
-  if (
-    status === 404 ||
-    (status === 400 &&
-      config.method === "get" &&
-      data.errors.hasOwnProperty("id"))
-  ) {
-    history.push("/notfound");
-  } else if (status === 500) {
-    toast.error("Server error - check the terminal for more info!");
+  if (error.response) {
+    const { status, data, config } = error.response;
+
+    if (
+      status === 404 ||
+      (status === 400 &&
+        config.method === "get" &&
+        data.errors.hasOwnProperty("id"))
+    ) {
+      history.push("/notfound");
+    } else if (status === 500) {
+      toast.error("Server error - check the terminal for more info!");
+    }
   }
 });
 
@@ -54,13 +57,13 @@ const requests = {
 };
 
 const Persons = {
-  list: (): Promise<IPerson[]> => requests.get('/persons'),
+  list: (): Promise<IPerson[]> => requests.get("/persons"),
   details: (id: string) => requests.get(`persons/${id}`),
-  create: (person: IPerson) => requests.post('/persons', person),
+  create: (person: IPerson) => requests.post("/persons", person),
   update: (person: IPerson) => requests.put(`persons/${person.id}`, person),
   delete: (id: string) => requests.del(`persons/${id}`)
-}
+};
 
 export default {
   Persons
-}
+};

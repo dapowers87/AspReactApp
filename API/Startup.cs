@@ -50,7 +50,7 @@ namespace API
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
 
-            _logger.LogError(Configuration.GetSection("MongoConnection:ConnectionString").Value);
+            _logger.LogError("connectionstring: " + Configuration.GetSection("MongoConnection:ConnectionString").Value);
 
             services.AddScoped<MongoSettings>(s =>
                 s.GetService<IOptions<MongoSettings>>().Value
