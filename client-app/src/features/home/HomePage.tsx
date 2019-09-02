@@ -15,7 +15,7 @@ const HomePage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub repos for this project
+            GitHub repo for this project
           </a>
         </p>
         <p>
@@ -28,11 +28,11 @@ const HomePage = () => {
             My Resume
           </a>
           <br />
-          
-          <div style={{marginTop:'2em'}}/>
+
+          <div style={{ marginTop: "2em" }} />
           <Label>Diagram of the AspReactApp Project</Label>
-          <br/>
-          <img  src={diagram} alt="diagram" />
+          <br />
+          <img src={diagram} alt="diagram" />
         </p>
       </header>
     </div>
