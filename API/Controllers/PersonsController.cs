@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Domain;
 using MediatR;
 using Application.Persons;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Application.Activities;
 
 namespace API.Controllers
@@ -25,7 +22,7 @@ namespace API.Controllers
             this._mediator = mediator;
         }
 
-        // GET api/values
+        // GET api/persons
         [HttpGet]
         public async Task<ActionResult<List<Person>>> Get()
         {
@@ -43,20 +40,22 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Unit>> Create(Create.Command command)
         {
-            _logger.LogDebug("Create method called for person: " + JsonConvert.SerializeObject(command));
             return await _mediator.Send(command);
         }
 
         // PUT api/persons/5
         [HttpPut("{id}")]
-        public void Put(string id, [FromBody] Person person)
+        public async Task<ActionResult<Unit>> Update(string id, Edit.Command command)
         {
+            command.Id = id;
+            return await _mediator.Send(command);
         }
 
         // DELETE api/persons/5
         [HttpDelete("{id}")]
-        public void Delete(string id)
+        public async Task<ActionResult<Unit>> Delete(string id)
         {
+            return await _mediator.Send(new Delete.Command { Id = id });
         }
     }
 }
