@@ -7,6 +7,6 @@ platform:
   arch: arm
 
 pipeline:
-    build-image:
-        command:
-            - docker build -t AspReactApp.API ./API
+  build-image:
+    command:
+      - docker build -t AspReactApp.API ./API
