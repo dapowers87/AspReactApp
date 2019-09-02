@@ -3,6 +3,12 @@ version: "3.4"
 services:
   mongodb:
     image: 'andresvidal/rpi3-mongodb3:latest'
+    volumes:
+      - /data/db:/data/db
+      - /data/configdb:/data/configdb
+    ports:
+      - '27017:27017'
+      - '28017:28017'
   client:
     build:
       context: ./client-app
