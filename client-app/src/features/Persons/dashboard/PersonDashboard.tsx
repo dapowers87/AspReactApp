@@ -18,7 +18,7 @@ const PersonDashboard: React.FC = () => {
 
   return (
     <Grid>
-      <Grid.Column width={5}>
+      <Grid.Column width={10}>
         <Button as={Link} to="/createPerson" icon>
           <Icon name="add user" />
         </Button>
