@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Persistence.Model;
+using Persistence.MongoDb;
 
 namespace API
 {
@@ -38,6 +40,18 @@ namespace API
             });
 
             services.AddMediatR(typeof(List.Handler).Assembly);
+
+            services.Configure<MongoSettings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+                options.Database = Configuration.GetSection("MongoConnection:Database").Value;
+            });
+
+            services.AddScoped<MongoSettings>(s =>
+                s.GetService<IOptions<MongoSettings>>().Value
+            );
+
+            services.AddScoped<MongoDataContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
