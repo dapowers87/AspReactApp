@@ -12,5 +12,5 @@ RUN dotnet publish -c $Configuration -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=builder /app .
 ENTRYPOINT ["dotnet", "API.dll"]
