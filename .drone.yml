@@ -6,7 +6,12 @@ platform:
   os: linux
   arch: arm
 
-pipeline:
-  build-image:
-    command:
-      - docker build -t AspReactApp.API ./API
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: dpowersnews/aspreactapp.api
