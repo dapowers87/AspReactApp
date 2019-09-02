@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import diagram from "../../assets/aspreactapp_diagram.jpg";
-import { Label, Grid, Image } from "semantic-ui-react";
+import { Label, Image } from "semantic-ui-react";
 
 const Diagram = () => {
   return (
