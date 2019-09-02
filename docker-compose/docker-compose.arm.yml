@@ -39,7 +39,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
-    command: --debug true --cleanup true client backend  
+    command: --debug true --cleanup true client backend portainer
 
 volumes:
   portainer_data:
