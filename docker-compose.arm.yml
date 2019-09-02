@@ -2,7 +2,10 @@ version: "3.4"
 
 services:
   mongodb:
-    image: 'andresvidal/rpi3-mongodb3:latest'
+    image: 'webhippie/mongodb:latest'
+    volumes:
+      - /data/db:/data/db
+      - /data/configdb:/data/configdb
   client:
     build:
       context: ./client-app
@@ -11,3 +14,5 @@ services:
   backend:
     build:
       context: .
+    ports:
+      - '5050:5050'
