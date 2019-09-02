@@ -1,54 +1,26 @@
 import React, { Fragment } from "react";
-import logo from "../logo.svg";
 import "./App.css";
 import NavBar from "../features/nav/NavBar";
 import { Route } from "react-router";
 import ValuesLister from "../features/values/ValuesLister";
 import { Container } from "semantic-ui-react";
+import PersonDashboard from "../features/Persons/dashboard/PersonDashboard";
+import HomePage from "../features/home/HomePage";
+import PersonForm from "../features/Persons/form/PersonForm";
+import { ToastContainer } from "react-toastify";
 
 const App: React.FC = () => {
   return (
     <Fragment>
+      <ToastContainer position="bottom-right" />
+      <Route exact path={"/"} component={HomePage} />
       <NavBar />
-      <Route
-        exact
-        path={"/"}
-        render={() => (
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                <a
-                  className="App-link"
-                  href="https://github.com/dapowers87/AspReactApp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub repos for this project
-                </a>
-              </p>
-              <p>
-                <a
-                  className="App-link"
-                  href="./david_powers_resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  My Resume
-                </a>
-              </p>
-            </header>
-          </div>
-        )}
-      />
-      <Route
-        path="/ValuesLister"
-        render={() => (
-          <Container style={{ marginTop: "7em"  }}>
-            <ValuesLister />
-          </Container>
-        )}
-      />
+      <Container style={{ marginTop: "7em" }}>
+        <Route path="/ValuesLister" component={ValuesLister} />
+        <Route path="/Persons" component={PersonDashboard} />
+        <Route path="/Person/:id" component={PersonForm} />
+        <Route path={["/createPerson", "/manage/:id"]} component={PersonForm} />
+      </Container>
     </Fragment>
   );
 };

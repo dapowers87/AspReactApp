@@ -10,7 +10,8 @@ const NavBar: React.FC = () => {
           <Menu.Item header as={NavLink} exact to='/'>
             Home
           </Menu.Item>
-          <Menu.Item name="Values Lister"  as={Link} to='./ValuesLister' />
+          <Menu.Item name="Values Lister"  as={Link} to='/ValuesLister' />
+          <Menu.Item name="Mongo Persons List"  as={Link} to='/Persons' />
         </Container>
       </Menu>
     </div>
