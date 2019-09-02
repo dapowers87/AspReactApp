@@ -39,6 +39,11 @@ namespace Application.Values
                     {
                         id = 5,
                         value = "value5"
+                    },
+                    new Value
+                    {
+                        id = 6,
+                        value = "value6"
                     }
                 };
 
