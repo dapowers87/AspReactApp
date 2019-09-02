@@ -11,6 +11,7 @@ class PersonStore {
   @observable loadedPerson: IPerson | null = null;
   @observable isLoading = false;
   @observable isSubmitting = false;
+  @observable submittingId: string = '';
 
   @computed get persons() {
     return Array.from(this.personRegistry.values());
@@ -71,6 +72,7 @@ class PersonStore {
   @action deletePerson = async (id: string) => {
     try {
       this.isSubmitting = true;
+      this.submittingId = id;
       await agent.Persons.delete(id);
       runInAction("deleting person", () => {
         this.personRegistry.delete(id);
@@ -81,6 +83,7 @@ class PersonStore {
 
     runInAction('finish deletePerson', () => {
       this.isSubmitting = false;
+      this.submittingId = '';
     });
   };
 

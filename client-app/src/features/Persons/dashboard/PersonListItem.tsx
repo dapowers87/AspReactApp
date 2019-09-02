@@ -11,7 +11,7 @@ interface IProps {
 
 const PersonListItem: React.FC<IProps> = ({person}) => {
     const personStore = useContext(PersonStore)
-    const {deletePerson} = personStore;
+    const {deletePerson, isSubmitting, submittingId} = personStore;
 
     const handleDelete = () => {
         deletePerson(person.id);
@@ -29,7 +29,7 @@ const PersonListItem: React.FC<IProps> = ({person}) => {
                 <Icon name="marker" /> {person.location}
             </Segment>
             <Segment clearing>
-                <Button onClick={handleDelete} floated='right' color='red'>Delete</Button>
+                <Button loading={submittingId == person.id && isSubmitting} onClick={handleDelete} floated='right' color='red'>Delete</Button>
                 <Button as={Link} to={`/Person/${person.id}`} floated='right' color='blue'>Edit</Button>
             </Segment>
         </Segment.Group>
