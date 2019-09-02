@@ -16,6 +16,7 @@ services:
     volumes:
       - /data/db:/data/db
       - /data/configdb:/data/configdb
+    restart: always
     ports:
       - '27017:27017'
       - '28017:28017'
@@ -23,19 +24,21 @@ services:
   client:
     container_name: client
     image: 'dpowersnewg/aspreactapp.client-app'
+    restart: always
     ports:
       - '5001:80'
   backend:
     container_name: backend
     image: 'dpowersnewg/aspreactapp.api'
+    restart: always
     ports:
       - '5050:5050'
   watchtower:
     container_name: watchtower
-    restart: always
     image: 'containrrr/watchtower'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
     command: --debug true --cleanup true client backend  
 
 volumes:
