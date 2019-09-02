@@ -6,6 +6,7 @@ using MediatR;
 using Application.Persons;
 using Microsoft.Extensions.Logging;
 using Application.Activities;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -40,6 +41,7 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Unit>> Create(Create.Command command)
         {
+            _logger.LogInformation(JsonConvert.SerializeObject(command));
             return await _mediator.Send(command);
         }
 
