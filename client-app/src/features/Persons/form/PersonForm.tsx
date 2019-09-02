@@ -24,8 +24,6 @@ const PersonForm: React.FC<RouteComponentProps<FormParams>> = ({
   const {
     createPerson,
     loadPerson,
-    loadedPerson,
-    clearLoadedPerson,
     updatePerson,
     isSubmitting
   } = personStore;
@@ -39,22 +37,14 @@ const PersonForm: React.FC<RouteComponentProps<FormParams>> = ({
   });
 
   useEffect(() => {
-    if (match.params.id && person.id === "") {
-      console.log('Loading Person');
-      loadPerson(match.params.id);
-      if (loadedPerson) setPerson(loadedPerson);
+    if (match.params.id) {
+      loadPerson(match.params.id).then(person => {
+        if (person) setPerson(person);
+      });
     }
-
-    return () => {
-      clearLoadedPerson();
-    };
   }, [
     match.params.id,
-    loadPerson,
-    setPerson,
-    loadedPerson,
-    person.id,
-    clearLoadedPerson
+    loadPerson
   ]);
 
   const handleOnSubmit = () => {

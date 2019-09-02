@@ -11,7 +11,7 @@ class PersonStore {
   @observable loadedPerson: IPerson | null = null;
   @observable isLoading = false;
   @observable isSubmitting = false;
-  @observable submittingId: string = '';
+  @observable submittingId: string = "";
 
   @computed get persons() {
     return Array.from(this.personRegistry.values());
@@ -30,7 +30,7 @@ class PersonStore {
       console.log(error);
     }
 
-    runInAction('finish loadPersons', () => {
+    runInAction("finish loadPersons", () => {
       this.isLoading = false;
     });
   };
@@ -39,18 +39,18 @@ class PersonStore {
     try {
       this.isSubmitting = true;
       await agent.Persons.update(person);
-      runInAction('updating person', () => {
+      runInAction("updating person", () => {
         this.personRegistry.set(person.id, person);
         this.loadedPerson = person;
-      })
+      });
     } catch (error) {
       console.log(error);
     }
 
-    runInAction('finish updatePerson', () => {
+    runInAction("finish updatePerson", () => {
       this.isSubmitting = false;
     });
-  }
+  };
 
   @action createPerson = async (person: IPerson) => {
     try {
@@ -64,7 +64,7 @@ class PersonStore {
       console.log(error);
     }
 
-    runInAction('finish createPerson', () => {
+    runInAction("finish createPerson", () => {
       this.isSubmitting = false;
     });
   };
@@ -81,35 +81,42 @@ class PersonStore {
       console.log(error);
     }
 
-    runInAction('finish deletePerson', () => {
+    runInAction("finish deletePerson", () => {
       this.isSubmitting = false;
-      this.submittingId = '';
+      this.submittingId = "";
     });
   };
 
   @action loadPerson = async (id: string) => {
-    try {
-      this.isLoading = true;
-      const person = await agent.Persons.details(id);
-      runInAction("loading person", () => {
-        this.personRegistry.set(person.id, person);
-        this.loadedPerson = person;
+    let person = this.personRegistry.get(id);
+
+    if (person) {
+      this.loadedPerson = person;
+      return person;
+    } else {
+      try {
+        this.isLoading = true;
+        person = await agent.Persons.details(id);
+        runInAction("loading person", () => {
+          this.personRegistry.set(person.id, person);
+          this.loadedPerson = person;
+          this.isLoading = false;
+        });
+
+        return person;
+      } catch (error) {
+        console.log(error);
+      }
+
+      runInAction("finish loading person", () => {
         this.isLoading = false;
       });
-      return person;
-    } catch (error) {
-      console.log(error);
     }
-
-    runInAction("finish loading person", () => {
-      this.isLoading = false;
-    });
-    return null;
   };
 
   @action clearLoadedPerson = () => {
     this.loadedPerson = null;
-  }
+  };
 }
 
 export default createContext(new PersonStore());

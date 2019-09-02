@@ -29,7 +29,7 @@ const PersonListItem: React.FC<IProps> = ({person}) => {
                 <Icon name="marker" /> {person.location}
             </Segment>
             <Segment clearing>
-                <Button loading={submittingId == person.id && isSubmitting} onClick={handleDelete} floated='right' color='red'>Delete</Button>
+                <Button loading={submittingId === person.id && isSubmitting} onClick={handleDelete} floated='right' color='red'>Delete</Button>
                 <Button as={Link} to={`/Person/${person.id}`} floated='right' color='blue'>Edit</Button>
             </Segment>
         </Segment.Group>

@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../../assets/logo.svg";
+import diagram from "../../assets/aspreactapp_diagram.jpg";
+import { Label } from "semantic-ui-react";
 
 const HomePage = () => {
   return (
@@ -25,6 +27,12 @@ const HomePage = () => {
           >
             My Resume
           </a>
+          <br />
+          
+          <div style={{marginTop:'2em'}}/>
+          <Label>Diagram of the AspReactApp Project</Label>
+          <br/>
+          <img  src={diagram} alt="diagram" />
         </p>
       </header>
     </div>

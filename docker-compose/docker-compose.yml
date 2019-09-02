@@ -5,11 +5,11 @@ services:
     image: 'mongo:latest'
   client:
     build:
-      context: ./client-app
+      context: ../client-app
     ports:
       - '5001:80'
   backend:
     build:
-      context: .
+      context: ../
     ports:
       - '5050:5050'
