@@ -43,7 +43,7 @@ namespace Application.Values
                     new Value
                     {
                         id = 6,
-                        value = "value6" 
+                        value = "value6"  
                     }
                 };
 
