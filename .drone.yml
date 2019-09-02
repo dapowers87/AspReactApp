@@ -15,8 +15,6 @@ steps:
       password:
         from_secret: docker_password
       repo: dpowersnewg/aspreactapp.api
-    when:
-      branch: master
   - name: client-app-docker
     image: plugins/docker
     settings:
@@ -27,5 +25,7 @@ steps:
       repo: dpowersnewg/aspreactapp.client-app
       dockerfile: ./client-app/Dockerfile
       context: ./client-app
-    when:
-      branch: master
+
+trigger:
+  branch:
+  - master
