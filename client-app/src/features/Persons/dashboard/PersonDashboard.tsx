@@ -24,6 +24,7 @@ const PersonDashboard: React.FC = () => {
           <Button as={Link} to="/createPerson" color='green' icon floated='right'>
             <Icon name="add user" />
           </Button>
+          <br/>
           <PersonList />
         </Grid.Column>
       </Grid>
