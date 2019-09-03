@@ -5,7 +5,7 @@ import {Image} from 'semantic-ui-react'
 const HomePage = () => {
   return (
     <div className="App">
-      <header style={{marginTop:'40px'}} className="App-header">
+      <header className="App-header">
         <Image style={{resizeMode:'contain'}} src={logo} alt="logo" />
         <br/>
         <p>
