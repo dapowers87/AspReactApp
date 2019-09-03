@@ -11,14 +11,14 @@ trigger:
   - master
 
 steps:
-  - name: backend-docker
-    image: plugins/docker
-    settings:
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-      repo: dpowersnewg/aspreactapp.api
+  # - name: backend-docker
+  #   image: plugins/docker
+  #   settings:
+  #     username:
+  #       from_secret: docker_username
+  #     password:
+  #       from_secret: docker_password
+  #     repo: dpowersnewg/aspreactapp.api
   - name: client-app-docker
     image: plugins/docker
     settings:
