@@ -10,7 +10,9 @@ const ValuesLister = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/values`)
       .then(response => {
-        setValues(response.data);
+        if (response) {
+          setValues(response.data);
+        }
       });
   }, []);
 
