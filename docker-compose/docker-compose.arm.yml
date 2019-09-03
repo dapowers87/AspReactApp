@@ -25,6 +25,8 @@ services:
     container_name: client
     image: 'dpowersnewg/aspreactapp.client-app'
     restart: always
+    volumes:
+      - /etc/letsencrypt/live/davidpowers.dev/:/etc/letsencrypt/live/davidpowers.dev/
     ports:
       - '80:80'
   backend:
