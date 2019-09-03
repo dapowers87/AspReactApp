@@ -12,4 +12,5 @@ RUN dotnet publish -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=builder /app .
+COPY API/cert/fullchain.pfx .
 ENTRYPOINT ["dotnet", "API.dll"]
