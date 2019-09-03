@@ -16,13 +16,21 @@ const App: React.FC = () => {
       <ToastContainer position="bottom-right" />
       <Route exact path={"/"} component={HomePage} />
       <NavBar />
-      <Container style={{ paddingTop: "7em" }}>
-        <Route path="/ValuesLister" component={ValuesLister} />
-        <Route path="/Persons" component={PersonDashboard} />
-        <Route path="/Diagram" component={Diagram} />
-        <Route path="/Person/:id" component={PersonForm} />
-        <Route path={["/createPerson", "/manage/:id"]} component={PersonForm} />
-      </Container>
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <Container style={{ paddingTop: "7em" }}>
+            <Route path="/ValuesLister" component={ValuesLister} />
+            <Route path="/Persons" component={PersonDashboard} />
+            <Route path="/Diagram" component={Diagram} />
+            <Route path="/Person/:id" component={PersonForm} />
+            <Route
+              path={["/createPerson", "/manage/:id"]}
+              component={PersonForm}
+            />
+          </Container>
+        )}
+      />
     </Fragment>
   );
 };
