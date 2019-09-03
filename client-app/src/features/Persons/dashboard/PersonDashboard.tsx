@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Grid, Button, Icon } from "semantic-ui-react";
+import React, { useContext, useEffect, Fragment } from "react";
+import { Grid, Button, Icon, Label } from "semantic-ui-react";
 import PersonList from "./PersonList";
 import PersonStore from "../../../app/stores/personStore";
 import { observer } from "mobx-react-lite";
@@ -17,14 +17,17 @@ const PersonDashboard: React.FC = () => {
     return <LoadingComponent content="Loading People..." />;
 
   return (
-    <Grid>
-      <Grid.Column width={10}>
-        <Button as={Link} to="/createPerson" icon>
-          <Icon name="add user" />
-        </Button>
-        <PersonList />
-      </Grid.Column>
-    </Grid>
+    <Fragment>
+      <Label style={{maxWidth: '35em'}}>This is a demo of a CRUD system for person entities stored in a MongoDB collection. The backend system follows CQRS standards.</Label>
+      <Grid style={{marginTop:'1em'}}>
+        <Grid.Column width={8}>
+          <Button as={Link} to="/createPerson" color='green' icon>
+            <Icon name="add user" />
+          </Button>
+          <PersonList />
+        </Grid.Column>
+      </Grid>
+    </Fragment> 
   );
 };
 
