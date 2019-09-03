@@ -26,7 +26,7 @@ services:
     image: 'dpowersnewg/aspreactapp.client-app'
     restart: always
     ports:
-      - '5001:80'
+      - '80:80'
   backend:
     container_name: backend
     image: 'dpowersnewg/aspreactapp.api'
