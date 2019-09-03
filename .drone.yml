@@ -22,7 +22,7 @@ steps:
       repo: dpowersnewg/aspreactapp.api
   - name: client-app-docker
     image: plugins/docker
-    group: build
+    group: build2
     settings:
       username:
         from_secret: docker_username
