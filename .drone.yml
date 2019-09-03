@@ -1,6 +1,7 @@
+#BACKEND BUILD
 kind: pipeline
 type: docker
-name: default
+name: backend-build
 
 platform:
   os: linux
@@ -19,6 +20,21 @@ steps:
       password:
         from_secret: docker_password
       repo: dpowersnewg/aspreactapp.api
+
+#CLIENT-APP BUILD
+kind: pipeline
+type: docker
+name: client-app-build
+
+platform:
+  os: linux
+  arch: arm
+
+trigger:
+  branch:
+  - master
+
+steps:
   - name: client-app-docker
     image: plugins/docker
     settings:
@@ -29,5 +45,3 @@ steps:
       repo: dpowersnewg/aspreactapp.client-app
       dockerfile: ./client-app/Dockerfile
       context: ./client-app
-
-
