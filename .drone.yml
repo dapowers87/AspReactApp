@@ -14,7 +14,6 @@ steps:
   - name: backend-docker
     image: plugins/docker
     depends_on: [ clone ]
-    group
     settings:
       username:
         from_secret: docker_username
