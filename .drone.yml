@@ -13,7 +13,8 @@ trigger:
 steps:
   - name: backend-docker
     image: plugins/docker
-    group: build
+    depends_on: [ clone ]
+    group
     settings:
       username:
         from_secret: docker_username
@@ -22,7 +23,7 @@ steps:
       repo: dpowersnewg/aspreactapp.api
   - name: client-app-docker
     image: plugins/docker
-    group: build2
+    depends_on: [ clone ]
     settings:
       username:
         from_secret: docker_username
