@@ -25,7 +25,7 @@ const HomePage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            My Resume
+            Resume
           </a>
         </p>
       </header>
