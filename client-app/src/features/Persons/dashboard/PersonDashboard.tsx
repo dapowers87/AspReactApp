@@ -18,7 +18,7 @@ const PersonDashboard: React.FC = () => {
 
   return (
     <Fragment>
-      <Label style={{maxWidth: '35em'}}>This is a demo of a CRUD system for person entities stored in a MongoDB collection. The backend system follows CQRS pattern.</Label>
+      <Label style={{maxWidth: '35em'}}>This is a demo of a CRUD system for person entities stored in a MongoDB collection. The backend system follows the CQRS pattern.</Label>
       <Grid style={{marginTop:'1em'}}>
         <Grid.Column width={8}>
           <Button as={Link} to="/createPerson" color='green' icon floated='right'>
