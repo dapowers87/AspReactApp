@@ -19,7 +19,7 @@ const ValuesLister = () => {
   return (
     <Fragment>
       <Label>
-        This is an example of returning dummy data from a backend API.
+        This is an example of returning dummy data from a backend API using a RESTful interface.
       </Label>
       <Grid style={{ marginTop: "7em" }}>
         <Grid.Column width={3}>
