@@ -46,7 +46,8 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Unit>> Create(Create.Command command)
         {
-            _logger.LogInformation(JsonConvert.SerializeObject(command));
+            var ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+            command.Ip = ip;
             return await _mediator.Send(command);
         }
 
