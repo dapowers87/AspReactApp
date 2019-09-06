@@ -19,6 +19,7 @@ class PersonStore {
 
   @action loadPersons = async () => {
     try {
+      this.personRegistry.clear();
       this.isLoading = true;
       const persons = await agent.Persons.list();
       runInAction("loading persons", () => {
