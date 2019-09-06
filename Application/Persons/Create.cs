@@ -12,6 +12,7 @@ namespace Application.Activities
     {
         public class Command : IRequest
         {
+            public string Ip { get; set; }
             public string Id { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
@@ -33,6 +34,7 @@ namespace Application.Activities
                 var person = new Person
                 {
                     Id = request.Id,
+                    Ip = request.Ip,
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     Age = request.Age,

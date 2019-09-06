@@ -8,6 +8,9 @@ namespace Domain
         [BsonId]
         public string Id { get; set; }
 
+        [BsonElement("IP")]
+        public string Ip { get; set; }
+
         [BsonElement("FirstName")]
         public string FirstName { get; set; }
 

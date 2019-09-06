@@ -27,7 +27,12 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Person>>> Get()
         {
-            return await _mediator.Send(new List.Query());
+            var ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+
+            return await _mediator.Send(new List.Query
+            {
+                IP = ip
+            });
         }
 
         // GET api/persons/5
