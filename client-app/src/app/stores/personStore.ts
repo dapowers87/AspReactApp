@@ -58,7 +58,7 @@ class PersonStore {
       person.id = objectId();
       await agent.Persons.create(person);
       runInAction("creating person", () => {
-        this.personRegistry.set(person.id, person);
+        this.loadPersons()
       });
     } catch (error) {
       console.log(error);
