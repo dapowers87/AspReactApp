@@ -33,6 +33,8 @@ namespace Application.Persons
                 if(list.Count == 0)
                 {
                     list = GetPeople(request.IP);
+                    await _db.Persons.InsertManyAsync(list);
+                    list = await _db.Persons.Find(p => p.Ip == request.IP).ToListAsync();
                 }
 
                 return list;
@@ -44,7 +46,6 @@ namespace Application.Persons
                 {
                     new Person
                     {
-                        Id="1",
                         FirstName = "David",
                         LastName = "Powers",
                         Age = 32,
@@ -53,7 +54,6 @@ namespace Application.Persons
                     },
                     new Person
                     {
-                        Id="2",
                         FirstName = "Anne",
                         LastName = "Powers",
                         Age = 60,
@@ -62,7 +62,6 @@ namespace Application.Persons
                     },
                     new Person
                     {
-                        Id="3",
                         FirstName = "Aaron",
                         LastName = "G",
                         Age = 30,
