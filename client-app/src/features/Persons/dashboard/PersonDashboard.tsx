@@ -18,7 +18,7 @@ const PersonDashboard: React.FC = () => {
 
   return (
     <Fragment>
-      <Label style={{maxWidth: '35em'}}>This is a demo of a CRUD system for person entities stored in a MongoDB collection. The front-end communicates to the backend via a RESTful interface, and the backend system follows the CQRS pattern. The system starts with three example records until the first record is added, then it is filtered on IP address.</Label>
+      <Label style={{maxWidth: '35em'}}>This is a demo of a CRUD system for person entities stored in a MongoDB collection. The front-end communicates to the backend via a RESTful interface, and the backend system follows the CQRS pattern. The system filters records on IP address.</Label>
       <Grid style={{marginTop:'1em'}}>
         <Grid.Column width={8}>
           <Button as={Link} to="/createPerson" color='green' icon floated='right'>
