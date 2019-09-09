@@ -46,6 +46,7 @@ namespace Application.Persons
                 {
                     new Person
                     {
+                        Id = ObjectId.GenerateNewId().ToString(),
                         FirstName = "David",
                         LastName = "Powers",
                         Age = 32,
@@ -54,6 +55,7 @@ namespace Application.Persons
                     },
                     new Person
                     {
+                        Id = ObjectId.GenerateNewId().ToString(),
                         FirstName = "Anne",
                         LastName = "Powers",
                         Age = 60,
@@ -62,6 +64,7 @@ namespace Application.Persons
                     },
                     new Person
                     {
+                        Id = ObjectId.GenerateNewId().ToString(),
                         FirstName = "Aaron",
                         LastName = "G",
                         Age = 30,
