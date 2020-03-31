@@ -27,9 +27,6 @@ services:
     restart: always
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     ports:
       - '80:80'
       - '443:443'
@@ -37,10 +34,10 @@ services:
     container_name: backend
     image: 'dpowersnewg/aspreactapp.api'
     restart: always
-    volumes:
-      - /certs:/certs
     ports:
       - '5050:443'
+    volumes:
+      - /certs:/certs
     environment:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=443
