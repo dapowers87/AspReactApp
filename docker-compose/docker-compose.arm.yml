@@ -37,6 +37,8 @@ services:
     container_name: backend
     image: 'dpowersnewg/aspreactapp.api'
     restart: always
+    volumes:
+      - /certs:/certs
     ports:
       - '5050:443'
     environment:
