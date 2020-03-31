@@ -41,7 +41,7 @@ services:
     environment:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=443
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=fullchain.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/certificate.pfx
   watchtower:
     container_name: watchtower
     image: 'containrrr/watchtower'
