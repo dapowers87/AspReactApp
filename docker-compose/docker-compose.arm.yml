@@ -49,12 +49,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     command: --debug true --cleanup true client backend portainer
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+#   certbot:
+#     image: certbot/certbot
+#     volumes:
+#       - ./data/certbot/conf:/etc/letsencrypt
+#       - ./data/certbot/www:/var/www/certbot
+#     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 volumes:
   portainer_data:
