@@ -20,7 +20,7 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: dpowersnewg/aspreactapp.api
+      repo: dpowersnewg/aspreactapp.api.amd
   - name: client-app-docker
     image: plugins/docker
     depends_on: [ clone ]
@@ -29,7 +29,7 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: dpowersnewg/aspreactapp.client-app
+      repo: dpowersnewg/aspreactapp.client-app.amd
       dockerfile: ./client-app/Dockerfile
       context: ./client-app
 
