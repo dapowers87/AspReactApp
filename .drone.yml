@@ -4,7 +4,8 @@ name: AspReactAppBuild
 
 platform:
   os: linux
-  arch: arm
+  arch: amd64
+# arch: arm
 
 trigger:
   branch:
